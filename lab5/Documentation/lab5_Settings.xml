@@ -889,7 +889,7 @@ Autoselect
       <MeasureChan v="don&amp;apos;t generate code" />
       <EnableExtChanTrigger v="don&amp;apos;t generate code" />
       <EnableIntChanTrigger v="don&amp;apos;t generate code" />
-      <GetValue v="don&amp;apos;t generate code" />
+      <GetValue v="generate code" />
       <GetChanValue v="don&amp;apos;t generate code" />
       <GetValue8 v="don&amp;apos;t generate code" />
       <GetChanValue8 v="don&amp;apos;t generate code" />

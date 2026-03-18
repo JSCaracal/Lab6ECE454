@@ -1,12 +1,18 @@
-15:29:53 **** Incremental Build of configuration Debug for project lab5 ****
+16:26:15 **** Incremental Build of configuration Debug for project lab5 ****
+make all 
+Building file: ../Sources/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:/Users/jsipo/Documents/lab5a/lab5/Static_Code/PDD" -I"C:/Users/jsipo/Documents/lab5a/lab5/Static_Code/IO_Map" -I"C:/Users/jsipo/Documents/lab5a/lab5/Sources" -I"C:/Users/jsipo/Documents/lab5a/lab5/Generated_Code" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building target: lab5.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "C:/Users/jsipo/Documents/lab5a/lab5/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/jsipo/Documents/lab5a/lab5/Project_Settings/Linker_Files" -Wl,-Map,"lab5.map" -specs=nano.specs -specs=nosys.specs -o "lab5.elf"  ./Sources/Events.o ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AD1.o ./Generated_Code/AS1.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/AdcLdd1.o ./Generated_Code/Bit1.o ./Generated_Code/Cpu.o ./Generated_Code/PE_LDD.o ./Generated_Code/PWM1.o ./Generated_Code/PWM2.o ./Generated_Code/PwmLdd1.o ./Generated_Code/PwmLdd2.o ./Generated_Code/TU1.o ./Generated_Code/TU2.o ./Generated_Code/Vectors.o   
+Finished building target: lab5.elf
+ 
+16:26:22 **** Incremental Build of configuration Debug for project lab5 ****
 make all 
 make: Nothing to be done for 'all'.
-15:30:27 **** Incremental Build of configuration Debug for project lab5 ****
-make all 
-make: Nothing to be done for 'all'.
-15:33:13 **** Incremental Build of configuration Debug for project lab5 ****
-make all 
-make: Nothing to be done for 'all'.
-15:34:22 **** Incremental Build of configuration Debug for project lab5 ****
+16:27:07 **** Incremental Build of configuration Debug for project lab5 ****
 make all 
 make: Nothing to be done for 'all'.

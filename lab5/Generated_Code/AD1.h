@@ -7,7 +7,7 @@
 **     Version     : Component 01.697, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2026-03-18, 15:22, # CodeGen: 37
+**     Date/Time   : 2026-03-18, 15:40, # CodeGen: 43
 **     Abstract    :
 **         This device "ADC" implements an A/D converter,
 **         its control methods and interrupt/event handling procedure.
@@ -41,6 +41,7 @@
 **            Slow speed mode                              : This component disabled
 **     Contents    :
 **         Measure    - byte AD1_Measure(bool WaitForResult);
+**         GetValue   - byte AD1_GetValue(void* Values);
 **         GetValue16 - byte AD1_GetValue16(word *Values);
 **         Calibrate  - byte AD1_Calibrate(bool WaitForResult);
 **
@@ -158,6 +159,38 @@ byte AD1_Measure(bool WaitForResult);
 **                           the active speed mode
 **                           ERR_DISABLED - Device is disabled
 **                           ERR_BUSY - A conversion is already running
+*/
+/* ===================================================================*/
+
+byte AD1_GetValue(void* Values);
+/*
+** ===================================================================
+**     Method      :  AD1_GetValue (component ADC)
+*/
+/*!
+**     @brief
+**         Returns the last measured values for all channels. Format
+**         and width of the value is a native format of the A/D
+**         converter.
+**     @param
+**         Values          - Pointer to the array that contains
+**                           the measured data. Data type is a byte, a
+**                           word or an int. It depends on the supported
+**                           modes, resolution, etc. of the AD converter.
+**                           See the Version specific information for
+**                           the current CPU in [General Info].
+**     @return
+**                         - Error code, possible codes:
+**                           ERR_OK - OK
+**                           ERR_SPEED - This device does not work in
+**                           the active speed mode
+**                           ERR_NOTAVAIL - Requested value not
+**                           available
+**                           ERR_OVERRUN - External trigger overrun flag
+**                           was detected after the last value(s) was
+**                           obtained (for example by GetValue). This
+**                           error may not be supported on some CPUs
+**                           (see generated code).
 */
 /* ===================================================================*/
 

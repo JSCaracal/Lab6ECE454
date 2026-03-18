@@ -74,6 +74,13 @@ void PWM1_OnEnd(void)
 {
 	//60690
   /* Write your code here ... */
+	int idx = 0;
+	extern volatile uint8_t frame_ready;
+	volatile uint16_t adc[128];
+
+	uint16_t val;
+
+
 	PWM1_SetRatio16(60690);
 }
 
@@ -97,6 +104,7 @@ void PWM2_OnEnd(void)
 {
   /* Write your code here ... */
 	PWM2_SetRatio16(60690);
+
 }
 
 /*

@@ -48,7 +48,9 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
-static uint8_t value;
+static uint16_t value;
+volatile uint8_t frame_ready;
+uint16_t adc_input[128];
 char thing;
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
@@ -63,13 +65,50 @@ int main(void)
   /* Write your code here */
   /* For example: for(;;) { } */
   for(;;){
+	  if(frame_ready){
+		  static uint16_t min, max;
+		  min = 65535;
+		  max = 0;
+		  uint16_t x = 0;
+		  for(int i = 0; i < 128; i++){
+			  x = adc_input[i];
+			  if(x < min) min = x;
+			  if(x > max) max = x;
+		  }
+		  uint16_t mid = (uint16_t)((min+max)/2);
+
+		  //Build the serial
+		  char output[130];
+		  int dark_spots = 0;
+		  int sum_of_indices = 0;
+		  //Find the threshold if adc_input > mid then 1, else 0
+		  for(int i = 0; i < 128; i++){
+			  if(adc_input[i] < mid){
+				  output[i] = '1';
+				  dark_spots++;
+				  sum_of_indices += i;
+			  }else{
+				  output[i] = '0';
+			  }
+		  }
+		  output[128] = '\r';
+		  output[129] = '\n';
+		  //Write to serial
+		  for(int k = 0; k < 130; k++){
+			  AS1_SendChar(output[k]);
+		  }
+	  }
+
+		  //TODO Part 3
+
+
 	  /**(void)Bit1_GetVal(&value);
 	  //thing = (char)value;
 	 **/
-	  (void)AD1_Measure(1);
+	  //(void)AD1_Measure(1);
 	  //(void)AD1_GetValue16(&value);
-	  (void)AD1_GetValue8(&value);
-	   AS1_SendChar(value%10 + 48);
+	  //(void)AD1_GetValue16(&value);
+	  // AS1_SendChar(value + 48);
   }
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
